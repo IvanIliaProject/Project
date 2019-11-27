@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="Persistence" transaction-type="RESOURCE_LOCAL">
+        <description> Hibernate JPA Configuration Example</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>models.AdminEntity</class>
+        <class>models.CustomerEntity</class>
+        <class>models.DistributorEntity</class>
+        <class>models.EventEntity</class>
+        <class>models.OrganizerEntity</class>
+        <class>models.UserDetailsEntity</class>
+        <class>models.UserTypeEntity</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl" />
+            <property name="javax.persistence.jdbc.user" value="javaproject" />
+            <property name="javax.persistence.jdbc.password" value="java" />
+        </properties>
+    </persistence-unit>
+</persistence>

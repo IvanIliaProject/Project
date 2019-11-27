@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXControllers.AdminController">
+   <children>
+      <TextField fx:id="fullname" layoutX="69.0" layoutY="58.0" />
+      <PasswordField fx:id="password" layoutX="69.0" layoutY="251.0" />
+      <TextField fx:id="email" layoutX="69.0" layoutY="185.0" />
+      <TextField fx:id="username" layoutX="69.0" layoutY="125.0" />
+      <TextField fx:id="phone" layoutX="69.0" layoutY="318.0" />
+      <Button fx:id="button" layoutX="396.0" layoutY="326.0" mnemonicParsing="false" onAction="#add" text="Button" />
+      <ComboBox fx:id="combobox" layoutX="354.0" layoutY="58.0" onAction="#setRole" prefWidth="150.0" />
+      <TextField fx:id="company" layoutX="336.0" layoutY="132.0" visible="false" />
+      <TextField fx:id="salary" layoutX="336.0" layoutY="185.0" visible="false" />
+      <TextField fx:id="rating" layoutX="336.0" layoutY="236.0" visible="false" />
+   </children>
+</AnchorPane>

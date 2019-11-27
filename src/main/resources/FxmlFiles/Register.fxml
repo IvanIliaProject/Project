@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #253243;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXControllers.SignUpController">
+   <children>
+      <Label layoutX="227.0" text="SignUp" textFill="#6681bf">
+         <font>
+            <Font name="System Italic" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fullname" layoutX="151.0" layoutY="45.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your fullname" style="-fx-background-color: #455375;" />
+      <PasswordField fx:id="password" layoutX="151.0" layoutY="158.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your password" style="-fx-background-color: #455375;" />
+      <TextField fx:id="email" layoutX="151.0" layoutY="207.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your email" style="-fx-background-color: #455375;" />
+      <Label layoutX="22.0" layoutY="45.0" text="FullName" textFill="#5478cd">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="157.0" text="Password" textFill="#5478cd">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="213.0" prefHeight="27.0" prefWidth="75.0" text="Email" textFill="#5478cd">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="sign" layoutX="151.0" layoutY="337.0" mnemonicParsing="false" onAction="#signUp" prefHeight="44.0" prefWidth="138.0" style="-fx-background-color: #30d6c0;" text="Sign">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="login" layoutX="320.0" layoutY="337.0" mnemonicParsing="false" onAction="#goLogin" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: #30d6c0;" text="Login">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="22.0" layoutY="101.0" prefHeight="32.0" prefWidth="75.0" text="Username" textFill="#5478cd">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="276.0" text="Telephone" textFill="#5478cd">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Username" layoutX="151.0" layoutY="102.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your Username" style="-fx-background-color: #455375;" />
+      <TextField fx:id="PhoneNumber" layoutX="151.0" layoutY="277.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your phone number" style="-fx-background-color: #455375;" />
+   </children>
+</AnchorPane>
