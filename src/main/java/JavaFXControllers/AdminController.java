@@ -58,7 +58,6 @@ public class AdminController {
         }else if (chosenUser.equals("Distributor")){
             company.setVisible(true);
             salary.setVisible(true);
-            rating.setVisible(true);
         }
     }
     public void add(ActionEvent event) {
@@ -84,6 +83,7 @@ public class AdminController {
         if(chosenUser.equals("Organizer")){
             String companyOrganizer = company.getText();
             String salaryString = salary.getText();
+            setRole();
             double salaryOrganizer = Double.parseDouble(salaryString);
             OrganizerEntity organizerEntity = new OrganizerEntity();
             organizerEntity.setOrganizerCompany(companyOrganizer);
@@ -102,12 +102,15 @@ public class AdminController {
         }else if(chosenUser.equals("Distributor")){
             String companyDistributor = company.getText();
             String salaryString = salary.getText();
+            setRole();
             double salaryDistributor = Double.parseDouble(salaryString);
+
             DistributorEntity distributorEntity = new DistributorEntity();
             distributorEntity.setDistributorCompany(companyDistributor);
             distributorEntity.setDistributorSalary(salaryDistributor);
+
             distributorEntity.setDistributorRating(0);
-            distributorEntity.setDistributorSold(0L);
+            distributorEntity.setDistributorSold(0);
             userDetailsEntity.setUserFullname(fullname1);
             userDetailsEntity.setUserUsername(user);
             userDetailsEntity.setUserPassword(pass);
