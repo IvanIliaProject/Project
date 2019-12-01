@@ -82,12 +82,12 @@ public class EventEntity {
 
     @Basic
     @Column(name = "EVENT_QUANTITY")
-    private Long eventQuantity;
-    public Long getEventQuantity() {
+    private Integer eventQuantity;
+    public Integer getEventQuantity() {
         return eventQuantity;
     }
 
-    public void setEventQuantity(Long eventQuantity) {
+    public void setEventQuantity(Integer eventQuantity) {
         this.eventQuantity = eventQuantity;
     }
 
