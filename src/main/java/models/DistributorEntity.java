@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "DISTRIBUTOR", schema = "JAVAPROJECT", catalog = "")
 public class DistributorEntity {
     private long distributorId;
-    private Long distributorSold;
+    private Integer distributorSold;
     private Double distributorRating;
     private Double distributorSalary;
     private String distributorCompany;
@@ -23,11 +23,11 @@ public class DistributorEntity {
 
     @Basic
     @Column(name = "DISTRIBUTOR_SOLD")
-    public Long getDistributorSold() {
+    public Integer getDistributorSold() {
         return distributorSold;
     }
 
-    public void setDistributorSold(Long distributorSold) {
+    public void setDistributorSold(Integer distributorSold) {
         this.distributorSold = distributorSold;
     }
 
