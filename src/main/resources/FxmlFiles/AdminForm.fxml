@@ -1,22 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXControllers.AdminController">
+<AnchorPane fx:id="Anchorpane" prefHeight="400.0" prefWidth="882.0" stylesheets="@../CSS/Admin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXControllers.AdminController">
    <children>
-      <TextField fx:id="fullname" layoutX="69.0" layoutY="58.0" />
-      <PasswordField fx:id="password" layoutX="69.0" layoutY="251.0" />
-      <TextField fx:id="email" layoutX="69.0" layoutY="185.0" />
-      <TextField fx:id="username" layoutX="69.0" layoutY="125.0" />
-      <TextField fx:id="phone" layoutX="69.0" layoutY="318.0" />
-      <Button fx:id="button" layoutX="396.0" layoutY="326.0" mnemonicParsing="false" onAction="#add" text="Button" />
-      <ComboBox fx:id="combobox" layoutX="354.0" layoutY="58.0" onAction="#setRole" prefWidth="150.0" />
-      <TextField fx:id="company" layoutX="336.0" layoutY="132.0" visible="false" />
-      <TextField fx:id="salary" layoutX="336.0" layoutY="185.0" visible="false" />
-      <TextField fx:id="rating" layoutX="336.0" layoutY="236.0" visible="false" />
+      <JFXComboBox fx:id="combobox" layoutX="371.0" layoutY="37.0" onAction="#setRole" prefHeight="31.0" prefWidth="111.0" unFocusColor="WHITE" />
+      <JFXTextField fx:id="company" layoutX="546.0" layoutY="53.0" unFocusColor="WHITE" visible="false" />
+      <JFXTextField fx:id="salary" layoutX="546.0" layoutY="149.0" unFocusColor="WHITE" visible="false" />
+      <Pane fx:id="pane" opacity="0.47" prefHeight="403.0" prefWidth="345.0">
+         <children>
+            <Label layoutX="7.0" layoutY="25.0" text="Full name:" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="fullname" layoutX="162.0" layoutY="26.0" unFocusColor="WHITE" />
+            <Label layoutX="5.0" layoutY="93.0" text="Username:" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="username" layoutX="162.0" layoutY="94.0" unFocusColor="WHITE" />
+            <Label layoutX="7.0" layoutY="169.0" text="Email:" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="email" layoutX="162.0" layoutY="170.0" unFocusColor="WHITE" />
+            <Label layoutX="8.0" layoutY="256.0" text="Password:" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <JFXPasswordField fx:id="password" layoutX="162.0" layoutY="249.0" unFocusColor="WHITE" />
+            <Label layoutY="336.0" text="Phone number:" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="phone" layoutX="162.0" layoutY="330.0" unFocusColor="WHITE" />
+         </children>
+      </Pane>
+      <Pane fx:id="adduserPane" layoutX="344.0" layoutY="319.0" prefHeight="84.0" prefWidth="539.0">
+         <children>
+            <JFXButton fx:id="button" layoutX="175.0" layoutY="18.0" prefHeight="48.0" prefWidth="230.0" text="Add User" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
