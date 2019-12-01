@@ -1,0 +1,22 @@
+#AnchorPane{
+    -fx-background-image: url('143640-full_68-marketing-wallpapers-on-wallpaperplay.jpg');
+    -fx-background-size: cover;
+}
+#Pane{
+    -fx-background-color: '#1d4c8f';
+    -fx-background-size: cover;
+}
+#LoginPane{
+    -fx-background-color: '#0c3a7a';
+    -fx-background-size: cover;
+}
+#username{
+    -fx-prompt-text-fill: '#ffffff';
+    -fx-text-fill: '#ffffff';
+    -fx-font-size: 22;
+}
+#password{
+    -fx-prompt-text-fill: '#ffffff';
+    -fx-text-fill: '#ffffff';
+    -fx-font-size: 22;
+}
