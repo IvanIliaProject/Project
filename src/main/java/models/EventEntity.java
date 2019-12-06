@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Time;
 
 @Entity
@@ -59,12 +60,12 @@ public class EventEntity {
 
     @Basic
     @Column(name = "EVENT_DATE")
-    private Time eventDate;
-    public Time getEventDate() {
+    private Date eventDate;
+    public Date getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(Time eventDate) {
+    public void setEventDate(Date eventDate) {
         this.eventDate = eventDate;
     }
 
@@ -82,15 +83,27 @@ public class EventEntity {
 
     @Basic
     @Column(name = "EVENT_QUANTITY")
-    private Integer eventQuantity;
-    public Integer getEventQuantity() {
+    private Long eventQuantity;
+    public Long getEventQuantity() {
         return eventQuantity;
     }
 
-    public void setEventQuantity(Integer eventQuantity) {
+    public void setEventQuantity(Long eventQuantity) {
         this.eventQuantity = eventQuantity;
     }
 
+
+    @Basic
+    @Column(name = "EVENT_TIME")
+    private String eventTime;
+
+    public String getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
+    }
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = OrganizerEntity.class)
     @JoinColumn(name = "ORGANIZER_ID")
     private OrganizerEntity organizerEntity;
