@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "DISTRIBUTOR", schema = "JAVAPROJECT", catalog = "")
 public class DistributorEntity {
     private long distributorId;
-    private Integer distributorSold;
     private Double distributorRating;
     private Double distributorSalary;
     private String distributorCompany;
@@ -22,22 +21,12 @@ public class DistributorEntity {
     }
 
     @Basic
-    @Column(name = "DISTRIBUTOR_SOLD")
-    public Integer getDistributorSold() {
-        return distributorSold;
-    }
-
-    public void setDistributorSold(Integer distributorSold) {
-        this.distributorSold = distributorSold;
-    }
-
-    @Basic
     @Column(name = "DISTRIBUTOR_RATING")
-    public double getDistributorRating() {
+    public Double getDistributorRating() {
         return distributorRating;
     }
 
-    public void setDistributorRating(double distributorRating) {
+    public void setDistributorRating(Double distributorRating) {
         this.distributorRating = distributorRating;
     }
 
@@ -71,9 +60,6 @@ public class DistributorEntity {
         if (o == null || getClass() != o.getClass()) return false;
 
         DistributorEntity that = (DistributorEntity) o;
-
-        if (distributorSold != null ? !distributorSold.equals(that.distributorSold) : that.distributorSold != null)
-            return false;
         if (distributorRating != null ? !distributorRating.equals(that.distributorRating) : that.distributorRating != null)
             return false;
         if (distributorSalary != null ? !distributorSalary.equals(that.distributorSalary) : that.distributorSalary != null)
@@ -86,7 +72,7 @@ public class DistributorEntity {
 
     @Override
     public int hashCode() {
-        int result = distributorSold != null ? distributorSold.hashCode() : 0;
+        int result = 0;
         result = 31 * result + (distributorRating != null ? distributorRating.hashCode() : 0);
         result = 31 * result + (distributorSalary != null ? distributorSalary.hashCode() : 0);
         result = 31 * result + (distributorCompany != null ? distributorCompany.hashCode() : 0);
