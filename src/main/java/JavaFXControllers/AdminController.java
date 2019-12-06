@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import models.*;
 
 import javax.persistence.EntityManager;
@@ -38,6 +39,8 @@ public class AdminController {
     public TextField salary;
     @FXML
     public TextField rating;
+    @FXML
+    public Pane visiblePane;
 
 
     @FXML
@@ -55,9 +58,15 @@ public class AdminController {
         if(chosenUser.equals("Organizer")){
             company.setVisible(true);
             salary.setVisible(true);
+            visiblePane.setVisible(true);
         }else if (chosenUser.equals("Distributor")){
             company.setVisible(true);
             salary.setVisible(true);
+            visiblePane.setVisible(true);
+        }else{
+            company.setVisible(false);
+            salary.setVisible(false);
+            visiblePane.setVisible(false);
         }
     }
     public void add(ActionEvent event) {
@@ -109,8 +118,7 @@ public class AdminController {
             distributorEntity.setDistributorCompany(companyDistributor);
             distributorEntity.setDistributorSalary(salaryDistributor);
 
-            distributorEntity.setDistributorRating(0);
-            distributorEntity.setDistributorSold(0);
+            distributorEntity.setDistributorRating(0.0);
             userDetailsEntity.setUserFullname(fullname1);
             userDetailsEntity.setUserUsername(user);
             userDetailsEntity.setUserPassword(pass);
