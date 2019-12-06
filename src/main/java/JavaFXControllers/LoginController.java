@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -35,7 +36,9 @@ public class LoginController {
     public Button Login;
     @FXML
     public Button Register;
-    
+    @FXML
+    public Label invalidUser;
+
     @FXML
     public void createLogin(ActionEvent event) throws IOException {
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Persistence");
@@ -50,6 +53,8 @@ public class LoginController {
             if (users.getUserUsername().equals(usernameField) && users.getUserPassword().equals(passwordField)){
                 if(!loggedUser.contains(users))
                 loggedUser.add(users);
+            }else{
+                invalidUser.setVisible(true);
             }
         }
         currentUser = loggedUser.get(loggedUser.size() - 1);
@@ -60,11 +65,31 @@ public class LoginController {
         Scene scene = new Scene(root);
         login.setScene(scene);
         login.show();
+        }else if (currentUser.getUserTypeEntity().getUserTypeId() == 2){
+            Login.getScene().getWindow().hide();
+            Stage login = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/FxmlFiles/OrganizerForm.fxml"));
+            Scene scene = new Scene(root);
+            login.setScene(scene);
+            login.show();
+        }else if (currentUser.getUserTypeEntity().getUserTypeId() == 1){
+            Login.getScene().getWindow().hide();
+            Stage login = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/FxmlFiles/AdminForm.fxml"));
+            Scene scene = new Scene(root);
+            login.setScene(scene);
+            login.show();
         }
     }
     @FXML
-    public void createRegister(ActionEvent event) {
-        
+    public void createRegister(ActionEvent event) throws IOException{
+        Register.getScene().getWindow().hide();
+        Stage register = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/FxmlFiles/Register.fxml"));
+        Scene scene = new Scene(root);
+        register.setScene(scene);
+        register.show();
         
     }
+
 }
