@@ -100,7 +100,7 @@ public class UserDetailsEntity {
     @PrimaryKeyJoinColumn
     private DistributorEntity distributorEntity;
 
-    public DistributorEntity setDistributorEntity() {
+    public DistributorEntity getDistributorEntity() {
         return distributorEntity;
     }
 
@@ -133,9 +133,6 @@ public class UserDetailsEntity {
     @JoinColumn(name = "USER_TYPE_ID")
     private UserTypeEntity userTypeEntity;
 
-    public DistributorEntity getDistributorEntity() {
-        return distributorEntity;
-    }
 
     public UserTypeEntity getUserTypeEntity() {
         return userTypeEntity;
