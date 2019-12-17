@@ -1,9 +1,19 @@
-#Anchorpane{
-    -fx-background-color: #7aabcc;
+#AnchorPaneAdmin{
+    -fx-background-image: url('istockphoto-690470194-612x612.jpg');
+    -fx-background-size: cover;
 }
 #pane{
-    -fx-background-color: #232424;
+    -fx-background-color: #d6d6d6 ;
 }
 #adduserPane{
-    -fx-background-color: #3b6f96;
+    -fx-background-color: #d6d6d6;
+}
+#visiblePane{
+    -fx-background-color: #d6d6d6;
+}
+#combobox{
+    -fx-font-size: 16;
+}
+#choosepane{
+    -fx-background-color: #d6d6d6
 }
