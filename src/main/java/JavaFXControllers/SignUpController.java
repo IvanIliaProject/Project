@@ -1,6 +1,5 @@
 package JavaFXControllers;
 
-import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +15,10 @@ import models.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.regex.Pattern;
+
 
 public class SignUpController {
     @FXML
@@ -41,6 +41,12 @@ public class SignUpController {
     public Label passwordValidate;
     @FXML
     public Label phoneValidate;
+    @FXML
+    public Label usernamevalid;
+    @FXML
+    public Label fullnamevalid;
+    @FXML
+    public Label succesfully;
 
     @FXML
     public void signUp(ActionEvent event) {
@@ -59,30 +65,53 @@ public class SignUpController {
         entitymanager.getTransaction( ).begin( );
 
         UserDetailsEntity userDetailsEntity = new UserDetailsEntity();
-
-        userDetailsEntity.setUserFullname(fullnameUser);
-        userDetailsEntity.setUserUsername(usernameUser);
-        if(isValidEamil(emailUser) && isValidPassword(passUser) && isValidPhone(phoneNumber)){
-          userDetailsEntity.setUserEmail(emailUser);
-          userDetailsEntity.setUserPhone(phoneNumber);
-          userDetailsEntity.setUserPassword(passUser);
-        UserTypeEntity userTypeEntity = entitymanager.find(UserTypeEntity.class, constTypeId);
-        userDetailsEntity.setUserTypeEntity(userTypeEntity);
-        entitymanager.persist(userDetailsEntity);
-        }else{
-            if (isValidPassword(passUser)){
-                userDetailsEntity.setUserPassword(passUser);
-            }else{
-                passwordValidate.setVisible(true);
-            }if (isValidPhone(phoneNumber)){
-                userDetailsEntity.setUserPhone(phoneNumber);
-            }else{
-                phoneValidate.setVisible(true);
-            }if (isValidEamil(emailUser)){
+        try {
+            if (!(fullnameUser.equals("") && usernameUser.equals(""))
+                    && isValidEamil(emailUser) && isValidPassword(passUser)
+                    && isValidPhone(phoneNumber)) {
+                userDetailsEntity.setUserFullname(fullnameUser);
+                userDetailsEntity.setUserUsername(usernameUser);
                 userDetailsEntity.setUserEmail(emailUser);
-            }else{
-                isValid.setVisible(true);
+                userDetailsEntity.setUserPhone(phoneNumber);
+                userDetailsEntity.setUserPassword(passUser);
+                UserTypeEntity userTypeEntity = entitymanager.find(UserTypeEntity.class, constTypeId);
+                userDetailsEntity.setUserTypeEntity(userTypeEntity);
+                entitymanager.persist(userDetailsEntity);
+                succesfully.setVisible(true);
+                fullnamevalid.setVisible(false);
+                isValid.setVisible(false);
+                phoneValidate.setVisible(false);
+                passwordValidate.setVisible(false);
+                usernamevalid.setVisible(false);
+            } else {
+                if (fullnameUser.equals("")){
+                    fullnamevalid.setVisible(true);
+                }else{
+                    fullnamevalid.setVisible(false);
+                }
+                if (usernameUser.equals("")){
+                    usernamevalid.setVisible(true);
+                }else{
+                    usernamevalid.setVisible(false);
+                }
+                if (isValidPassword(passUser)) {
+                    passwordValidate.setVisible(false);
+                } else {
+                    passwordValidate.setVisible(true);
+                }
+                if (isValidPhone(phoneNumber)) {
+                    phoneValidate.setVisible(false);
+                } else {
+                    phoneValidate.setVisible(true);
+                }
+                if (isValidEamil(emailUser)) {
+                    isValid.setVisible(false);
+                } else {
+                    isValid.setVisible(true);
+                }
             }
+        }catch(Exception e){
+            System.out.println("Something went wrong");
         }
 
         entitymanager.getTransaction().commit();
@@ -92,7 +121,7 @@ public class SignUpController {
     public void goLogin(ActionEvent event) throws Exception {
         login.getScene().getWindow().hide();
         Stage login = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/FxmlFiles/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/FxmlFiles/LoginForm.fxml"));
         Scene scene = new Scene(root);
         login.setScene(scene);
         login.show();
