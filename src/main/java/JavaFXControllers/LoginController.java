@@ -11,23 +11,25 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.UserDetailsEntity;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
-import javax.swing.*;
-import java.io.IOException;
-import java.net.UnknownServiceException;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class LoginController {
    public static UserDetailsEntity currentUser;
    public static List<UserDetailsEntity> allUsers = new ArrayList<>();
 
    public static List<UserDetailsEntity> loggedUser = new ArrayList<>();
-
+   private static Logger logger = LogManager.getLogger(LoginController.class);
     @FXML
     public TextField username;
     @FXML
@@ -41,20 +43,22 @@ public class LoginController {
 
     @FXML
     public void createLogin(ActionEvent event) throws IOException {
+
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Persistence");
         EntityManager entitymanager = emfactory.createEntityManager();
         entitymanager.getTransaction().begin();
         String usernameField = username.getText();
         String passwordField = password.getText();
-
         allUsers = (List<UserDetailsEntity>) entitymanager.createQuery("from UserDetailsEntity ").getResultList();
-
         for (UserDetailsEntity users : allUsers) {
-            if (users.getUserUsername().equals(usernameField) && users.getUserPassword().equals(passwordField)){
-                if(!loggedUser.contains(users))
-                loggedUser.add(users);
-            }else{
-                invalidUser.setVisible(true);
+            if (users.getUserUsername().equals(usernameField) && users.getUserPassword().equals(passwordField)) {
+                if (!loggedUser.contains(users)) {
+                    loggedUser.add(users);
+                    logger.info("Username is: " + users.getUserUsername() + " and the password is: " + users.getUserPassword());
+                } else {
+                    invalidUser.setVisible(true);
+                    logger.warn("Invalid user");
+                }
             }
         }
         currentUser = loggedUser.get(loggedUser.size() - 1);
@@ -85,7 +89,7 @@ public class LoginController {
     public void createRegister(ActionEvent event) throws IOException{
         Register.getScene().getWindow().hide();
         Stage register = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/FxmlFiles/Register.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/FxmlFiles/RegisterForm.fxml"));
         Scene scene = new Scene(root);
         register.setScene(scene);
         register.show();
