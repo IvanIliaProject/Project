@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXControllers.CustomerController">
+   <children>
+      <TableView fx:id="tableView"  prefHeight="403.2" prefWidth="602.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columns>
+            <TableColumn fx:id="name" prefWidth="208.79999387264252" text="Event Name" />
+            <TableColumn fx:id="price" minWidth="0.0" prefWidth="74.4000244140625" text="Price" />
+            <TableColumn fx:id="date" prefWidth="94.4000244140625" text="Date" />
+            <TableColumn fx:id="time" prefWidth="59.99993896484375" text="Time" />
+            <TableColumn fx:id="place" prefWidth="165.60003662109375" text="Place" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
