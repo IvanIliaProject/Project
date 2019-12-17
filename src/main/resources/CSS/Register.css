@@ -1,0 +1,34 @@
+#pane{
+    -fx-background-image: url('login-background(1).jpg');
+    -fx-background-size: cover;
+}
+#fullname{
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}#username{
+     -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+     -fx-font-size: 20;
+ }
+ #password{
+     -fx-prompt-text-fill: white;
+     -fx-text-fill: white;
+     -fx-font-size: 20;
+ }
+#email{
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}
+#PhoneNumber{
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}
+
+
+#signuppane{
+    -fx-background-image: url('login-background(1).jpg');
+    -fx-background-size: cover;
+}
