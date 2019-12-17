@@ -1,0 +1,18 @@
+#anchorpane{
+    -fx-background-image: url('5cbac9214359a_thumb900.jpg');
+}
+#editpane{
+    -fx-background-color: #b6b6b8;
+}
+#newtimepane{
+    -fx-background-color: #b6b6b8;
+}
+#buttonspane{
+    -fx-background-color: #b6b6b8;
+}
+#choosepane{
+    -fx-background-color: #4d86db;
+}
+#combobox.combo-box-base{
+    -fx-font-size: 20;
+}
