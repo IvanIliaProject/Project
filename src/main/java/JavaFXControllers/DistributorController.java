@@ -1,6 +1,7 @@
 package JavaFXControllers;
 
 import com.mysql.jdbc.log.Log;
+import javafx.application.Platform;
 import javafx.beans.binding.ObjectExpression;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +38,8 @@ public class DistributorController {
     public ComboBox CountTicketsCombo;
     @FXML
     public Label isSuccess;
+    @FXML
+    public ComboBox combocheck;
     EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Persistence" );
     EntityManager entitymanager = emfactory.createEntityManager( );
 
@@ -58,6 +61,7 @@ public class DistributorController {
                 solds = entitymanager.createQuery("from SoldEntity where eventEntity.eventId =: id ")
                         .setParameter("id",entity.getEventId()).getResultList();
             }*/
+
             for (EventEntity entity : eventEntities) {
                 if (date.after(entity.getEventDate()) && localTime.isAfter(LocalTime.parse(entity.getEventTime()))){
                     for (SoldEntity sold : solds) {
@@ -65,13 +69,11 @@ public class DistributorController {
                             if (sold.getDistributorEntity().getDistributorRating() >= 0 && sold.getDistributorEntity().getDistributorRating() <= 5) {
                                 if (sold.getSold() < 0.2 * entity.getEventSeats() && sold.getDistributorEntity().getDistributorRating() >= 0.2) {
                                     sold.getDistributorEntity().setDistributorRating(sold.getDistributorEntity().getDistributorRating() - 0.2);
-                                    System.out.println("aaa");
 
                                     entitymanager.persist(sold);
 
                                 }if (sold.getSold() >= 0.8 * entity.getEventSeats() && sold.getDistributorEntity().getDistributorRating() <= 4.8) {
                                     sold.getDistributorEntity().setDistributorRating(sold.getDistributorEntity().getDistributorRating() + 0.2);
-                                    System.out.println("bbbb");
 
                                     entitymanager.persist(sold);
                                 }
@@ -91,6 +93,7 @@ public class DistributorController {
                 }
             }
             entitymanager.getTransaction().commit();
+            initThread();
         }
     @FXML
     private double getEventData(ActionEvent event){
@@ -157,5 +160,53 @@ public class DistributorController {
             isSuccess.setText("No more tickets");
         }
     }
+    @FXML
+    private void initThread(){
+        Thread thread = new Thread(() -> {
+            Runnable updater = () -> newEventNotification();
+            Runnable updater1 = () -> unsoldTickets();
+            EventEntity event = eventEntities.get(eventEntities.size()-1);
+            while (true) {
+                try {
+                    Thread.sleep(7200000);
+                }
+                catch (InterruptedException ex) {
+                }
 
+                EventEntity event1 = eventEntities.get(eventEntities.size()-1);
+
+                if (!event.equals(event1)) {
+                    Platform.runLater(updater);
+                }
+                Platform.runLater(updater1);
+            }
+
+        });
+
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+
+    @FXML
+    public void newEventNotification(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("New Event!");
+        alert.showAndWait();
+    }
+
+    @FXML
+    public void unsoldTickets()
+    {
+        for (EventEntity eventEntity : eventEntities) {
+            if(eventEntity.getEventDate().toLocalDate().isAfter(eventEntity.getEventDate().toLocalDate().minusDays(2L)) && eventEntity.getEventQuantity() > 0)
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("There are unsold tickets!");
+                alert.showAndWait();
+            }
+        }
+    }
 }
