@@ -1,0 +1,17 @@
+#anchorpane{
+  -fx-background-image: url('5cbac9214359a_thumb900.jpg');
+    -fx-background-size: cover;
+}
+#firstpane{
+    -fx-background-color: #b6b6b8;
+}
+#secondpane{
+    -fx-background-color: #b6b6b8;
+}
+
+#createpane{
+    -fx-background-color: #3b6f96;
+}
+#timepane{
+    -fx-background-color: #b6b6b8;
+}
