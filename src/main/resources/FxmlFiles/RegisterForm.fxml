@@ -1,70 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="457.0" prefWidth="600.0" style="-fx-background-color: #253243;" stylesheets="@../CSS/Register.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXControllers.SignUpController">
+<AnchorPane fx:id="pane" prefHeight="596.0" prefWidth="938.0" stylesheets="@../CSS/Register.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXControllers.SignUpController">
    <children>
-      <Label layoutX="227.0" text="SignUp" textFill="#6681bf">
+      <Pane fx:id="signuppane" layoutX="403.0" opacity="0.82" prefHeight="596.0" prefWidth="534.0">
+         <children>
+            <JFXButton fx:id="login" layoutY="516.0" onAction="#goLogin" prefHeight="80.0" prefWidth="162.0" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="sign" layoutX="198.0" layoutY="516.0" onAction="#signUp" prefHeight="80.0" prefWidth="176.0" text="Sign up" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="username" focusColor="WHITE" layoutX="33.0" layoutY="214.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your username" unFocusColor="WHITE" />
+            <JFXPasswordField fx:id="password" focusColor="WHITE" layoutX="33.0" layoutY="362.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your password" unFocusColor="WHITE" />
+            <JFXTextField fx:id="email" focusColor="WHITE" layoutX="33.0" layoutY="298.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your email" unFocusColor="WHITE" />
+            <JFXTextField fx:id="PhoneNumber" layoutX="33.0" layoutY="436.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your phone number" unFocusColor="WHITE" />
+            <JFXTextField fx:id="fullname" focusColor="WHITE" layoutX="33.0" layoutY="136.0" prefHeight="31.0" prefWidth="308.0" promptText="Enter your full name" unFocusColor="WHITE" />
+            <Label fx:id="phoneValidate" layoutX="341.0" layoutY="439.0" prefHeight="69.0" prefWidth="194.0" text="The phone number must constains between 10 and 15 numbers!" textFill="#ff001a" visible="false" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="isValid" layoutX="341.0" layoutY="318.0" prefHeight="22.0" prefWidth="123.0" text="The email is invalid!" textFill="RED" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordValidate" layoutX="340.0" layoutY="362.0" prefHeight="44.0" prefWidth="176.0" text="The password is incorrect! Example: Qwerty@123" textFill="RED" visible="false" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="135.0" text="Create Account" textFill="#ffffff">
+               <font>
+                  <Font name="System Italic" size="40.0" />
+               </font>
+            </Label>
+            <Separator layoutX="113.0" layoutY="49.0" prefHeight="19.0" prefWidth="308.0" />
+            <Label fx:id="fullnamevalid" layoutX="341.0" layoutY="158.0" text="Please enter valid full name" textFill="RED" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="usernamevalid" layoutX="339.0" layoutY="236.0" text="Please enter valid username" textFill="RED" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="succesfully" layoutX="87.0" layoutY="68.0" text="Account successfully created!" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="46.0" layoutY="252.0" text="Sign up right now!" textFill="WHITE">
          <font>
             <Font name="System Italic" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="61.0" text="Full name:" textFill="#5478cd">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="176.0" text="Password" textFill="#5478cd">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="22.0" layoutY="230.0" prefHeight="27.0" prefWidth="75.0" text="Email" textFill="#5478cd">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Button fx:id="sign" layoutX="150.0" layoutY="391.0" mnemonicParsing="false" onAction="#signUp" prefHeight="44.0" prefWidth="138.0" style="-fx-background-color: #30d6c0;" text="Sign">
-         <font>
-            <Font name="System Italic" size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="login" layoutX="320.0" layoutY="391.0" mnemonicParsing="false" onAction="#goLogin" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: #30d6c0;" text="Login">
-         <font>
-            <Font name="System Italic" size="20.0" />
-         </font>
-      </Button>
-      <Label layoutX="17.0" layoutY="115.0" prefHeight="32.0" prefWidth="103.0" text="Username" textFill="#5478cd">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="17.0" layoutY="299.0" text="Telephone" textFill="#5478cd">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <JFXTextField fx:id="fullname" layoutX="150.0" layoutY="46.0" prefHeight="31.0" prefWidth="308.0" />
-      <JFXTextField fx:id="username" layoutX="151.0" layoutY="109.0" prefHeight="31.0" prefWidth="308.0" />
-      <JFXPasswordField fx:id="password" layoutX="151.0" layoutY="169.0" prefHeight="31.0" prefWidth="308.0" />
-      <JFXTextField fx:id="email" layoutX="150.0" layoutY="230.0" prefHeight="31.0" prefWidth="308.0" />
-      <JFXTextField fx:id="PhoneNumber" layoutX="151.0" layoutY="293.0" prefHeight="31.0" prefWidth="308.0" />
-      <Label fx:id="isValid" layoutX="474.0" layoutY="246.0" text="The email is invalid" textFill="WHITE" visible="false">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="488.0" layoutY="69.0" />
-      <Label fx:id="passwordValidate" layoutX="481.0" layoutY="187.0" text="The password is incorrect!" textFill="WHITE" visible="false">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="phoneValidate" layoutX="473.0" layoutY="302.0" prefHeight="58.0" prefWidth="162.0" text="The phone number must constains between 10 and 15 numbers!" textFill="WHITE" visible="false" wrapText="true" />
+      <Separator layoutX="30.0" layoutY="307.0" prefHeight="19.0" prefWidth="285.0" />
    </children>
 </AnchorPane>
