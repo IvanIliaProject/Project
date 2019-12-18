@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import models.EventEntity;
 import models.OrganizerEntity;
@@ -20,15 +21,14 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.temporal.TemporalField;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class OrganizerController {
+    private static Logger logger = LogManager.getLogger(OrganizerController.class);
     @FXML
     public JFXTextField name;
 
@@ -51,7 +51,7 @@ public class OrganizerController {
     public Label date1;
 
     @FXML
-    public JFXDatePicker datePicker;
+    public DatePicker datePicker;
 
     @FXML
     public Label time;
@@ -80,14 +80,16 @@ public class OrganizerController {
         EventEntity eventEntity = new EventEntity();
         eventEntity.setEventName(eventName);
         eventEntity.setEventPrice(eventPrice);
-        eventEntity.setEventQuantity(eventQuantity);
         eventEntity.setEventPlace(eventPlace);
         eventEntity.setEventSeats(eventQuantity);
 
-        //eventEntity.setEventTime(chosenTime);
-       // eventEntity.setEventDate(date);
+        eventEntity.setEventTime(chosenTime);
+        eventEntity.setEventDate(date);
         OrganizerEntity organizerEntity = entityManager.find(OrganizerEntity.class,LoginController.currentUser.getUserId());
         eventEntity.setOrganizerEntity(organizerEntity);
+
+        logger.info("Created event: Event name: "+eventName + ", Event price: " +eventPrice+", Event place: "
+                +eventPlace+", Event quantity: "+eventQuantity+", Event date: "+date+", Event time: "+chosenTime);
 
         for (UserDetailsEntity allUser : LoginController.allUsers) {
             if (allUser.getUserTypeEntity().getUserTypeId() == 3) {
