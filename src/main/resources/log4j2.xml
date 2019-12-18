@@ -15,7 +15,7 @@
        <!-- <Logger name="com.memorynotfound" level="debug"/>
         <Logger name="com.mchange.v2.c3p0" level="warn"/> -->
         <Root level="info">
-            <AppenderRef ref="File" />
+             <AppenderRef ref="File" />
         </Root>
     </Loggers>
 </Configuration>
