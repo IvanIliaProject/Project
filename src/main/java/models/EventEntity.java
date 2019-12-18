@@ -82,18 +82,6 @@ public class EventEntity {
     }
 
     @Basic
-    @Column(name = "EVENT_QUANTITY")
-    private Long eventQuantity;
-    public Long getEventQuantity() {
-        return eventQuantity;
-    }
-
-    public void setEventQuantity(Long eventQuantity) {
-        this.eventQuantity = eventQuantity;
-    }
-
-
-    @Basic
     @Column(name = "EVENT_TIME")
     private String eventTime;
 
@@ -129,8 +117,7 @@ public class EventEntity {
         if (eventPlace != null ? !eventPlace.equals(that.eventPlace) : that.eventPlace != null) return false;
         if (eventDate != null ? !eventDate.equals(that.eventDate) : that.eventDate != null) return false;
         if (eventSeats != null ? !eventSeats.equals(that.eventSeats) : that.eventSeats != null) return false;
-        if (eventQuantity != null ? !eventQuantity.equals(that.eventQuantity) : that.eventQuantity != null)
-            return false;
+
 
         return true;
     }
@@ -143,7 +130,6 @@ public class EventEntity {
         result = 31 * result + (eventPlace != null ? eventPlace.hashCode() : 0);
         result = 31 * result + (eventDate != null ? eventDate.hashCode() : 0);
         result = 31 * result + (eventSeats != null ? eventSeats.hashCode() : 0);
-        result = 31 * result + (eventQuantity != null ? eventQuantity.hashCode() : 0);
         return result;
     }
 }
