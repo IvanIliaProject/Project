@@ -98,7 +98,7 @@ public class UserDetailsEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
-    private DistributorEntity distributorEntity;
+    public DistributorEntity distributorEntity;
 
     public DistributorEntity getDistributorEntity() {
         return distributorEntity;
