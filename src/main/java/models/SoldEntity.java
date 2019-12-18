@@ -1,5 +1,7 @@
 package models;
 
+import org.junit.Test;
+
 import javax.persistence.*;
 
 @Entity
@@ -33,6 +35,17 @@ public class SoldEntity {
 
     public void setSold(Integer sold) {
         this.sold = sold;
+    }
+    @Basic
+    @Column(name = "QUANTITY")
+    public Long quantity;
+
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
     }
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = DistributorEntity.class)
