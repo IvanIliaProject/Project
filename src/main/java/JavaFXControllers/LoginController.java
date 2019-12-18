@@ -25,11 +25,11 @@ import java.util.List;
 
 
 public class LoginController {
-   public static UserDetailsEntity currentUser;
-   public static List<UserDetailsEntity> allUsers = new ArrayList<>();
+    public static UserDetailsEntity currentUser;
+    public static List<UserDetailsEntity> allUsers = new ArrayList<>();
 
-   public static List<UserDetailsEntity> loggedUser = new ArrayList<>();
-   private static Logger logger = LogManager.getLogger(LoginController.class);
+    public static List<UserDetailsEntity> loggedUser = new ArrayList<>();
+    //  private static Logger logger = LogManager.getLogger(LoginController.class);
     @FXML
     public TextField username;
     @FXML
@@ -52,15 +52,13 @@ public class LoginController {
         allUsers = (List<UserDetailsEntity>) entitymanager.createQuery("from UserDetailsEntity ").getResultList();
         for (UserDetailsEntity users : allUsers) {
             if (users.getUserUsername().equals(usernameField) && users.getUserPassword().equals(passwordField)) {
-                if (!loggedUser.contains(users)) {
+                if (!loggedUser.contains(users))
                     loggedUser.add(users);
-                    logger.info("Username is: " + users.getUserUsername() + " and the password is: " + users.getUserPassword());
-                } else {
-                    invalidUser.setVisible(true);
-                    logger.warn("Invalid user");
-                }
-            }
+            }else{
+                invalidUser.setVisible(true);
         }
+    }
+
         currentUser = loggedUser.get(loggedUser.size() - 1);
         if (currentUser.getUserTypeEntity().getUserTypeId() == 3){
         Login.getScene().getWindow().hide();
